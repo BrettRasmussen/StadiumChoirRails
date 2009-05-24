@@ -1,0 +1,89 @@
+<div class="column-1">
+
+  <h1>The Stadium Choir</h1>
+
+  <div id="rendered-content">
+
+    <h2>Sign Up</h2>
+
+    <% if !@singer.errors.empty? %>
+      <div id="error-message">
+        There were problems with the signup form:<br>
+        <% @singer.errors.each_full do |msg| %>
+          <%= msg %><br>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% form_for :singer, :url => {:action => "do_signup"} do |f| %>
+      <table id="signup-form">
+        <tr>
+          <th>First Name</th>
+          <td><%= f.text_field :first_name %></td>
+        </tr>
+        <tr>
+          <th>Last Name</th>
+          <td><%= f.text_field :last_name %></td>
+        </tr>
+        <tr>
+          <th>Email Address</th>
+          <td><%= f.text_field :email %></td>
+        </tr>
+        <tr>
+          <th>Age</th>
+          <td><%= f.text_field :age, :size => 5 %></td>
+        </tr>
+        <tr>
+          <th>Phone</th>
+          <td><%= f.text_field :phone %></td>
+        </tr>
+        <tr>
+          <th>Voice Part</th>
+          <td><%= f.select(:voicepart_id,
+                            Voicepart.find(:all).collect {|vp| [vp.name, vp.id]},
+                            :include_blank => true) %></td>
+        </tr>
+        <tr>
+          <th>Committed</th>
+          <td>
+            <%= check_box_tag 'committed', 'true' %><br>
+            Check this box if you are ready to commit to being a participant.
+            You may leave it unchecked if you need to wait until the schedule is
+            clearly defined but still wish to be on the mailing list.
+          </td>
+        </tr>
+        <tr>
+          <th>Recording Candidate</th>
+          <td>
+            <%= f.check_box :recording, {}, 'true' %><br>
+            Check this box if you would like to be considered for participating
+            in the recording session to be done in advance of the performance.
+            Note that this requires an audition.
+          </td>
+        </tr>
+        <tr>
+          <th>Comments</th>
+          <td>
+            <%= f.text_area :comments %><br>
+            Any special information you'd like to provide, including (if you
+            wish) vocal history.
+          </td>
+        </tr>
+      </table>
+
+      <%= submit_tag "Sign Me Up" %>
+    <% end %>
+  
+  </div>
+</div>
+
+
+<div class="column-2">
+
+  <div class="standard-container">
+    <div>
+      <h2><a href="/">Home</a></h2>
+    </div>
+  </div>
+
+</div>
