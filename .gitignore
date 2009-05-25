@@ -1,4 +1,5 @@
 log/*.log
 tmp/**/*
+tmp/restart.txt
 .*.swp
 *.sqlite3
