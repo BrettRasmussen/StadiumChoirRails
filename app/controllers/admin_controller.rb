@@ -31,6 +31,11 @@ class AdminController < ApplicationController
     end
   end
 
+  def email_list
+    sql = "select distinct(email) from singers"
+    @email_addresses = ActiveRecord::Base.connection.select_values(sql)
+  end
+
   def try_login
     if [params[:username], params[:password]] == %w[stadiumchoir Blu3.not3]
       session[:admin] = true
