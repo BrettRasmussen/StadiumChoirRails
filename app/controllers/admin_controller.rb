@@ -2,6 +2,8 @@ require 'ruby-debug'
 class AdminController < ApplicationController
   layout false
 
+  before_filter :authorize, :except => %w[login try_login]
+
   def index
     @singers = Singer.all
 
@@ -27,6 +29,19 @@ class AdminController < ApplicationController
         @email_dupes[email][:differences] = differences
       end
     end
+  end
+
+  def try_login
+    if [params[:username], params[:password]] == %w[stadiumchoir Blu3.not3]
+      session[:admin] = true
+      redirect_to :action => "index"
+    else
+      render :action => "login"
+    end
+  end
+
+  def authorize
+    redirect_to :action => "login" unless session[:admin] == true
   end
 
 end
