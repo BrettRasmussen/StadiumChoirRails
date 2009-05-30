@@ -20,3 +20,9 @@ production:
   database: db/production.sqlite3
   pool: 50
   timeout: 5000
+
+production_bak:
+  adapter: sqlite3
+  database: db/production_bak.sqlite3
+  pool: 50
+  timeout: 5000
