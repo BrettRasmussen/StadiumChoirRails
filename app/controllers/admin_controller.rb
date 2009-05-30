@@ -1,4 +1,3 @@
-require 'ruby-debug'
 class AdminController < ApplicationController
   layout false
 
