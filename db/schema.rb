@@ -9,13 +9,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090518040953) do
+ActiveRecord::Schema.define(:version => 20090530204654) do
 
   create_table "singers", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
-    t.string   "age"
+    t.integer  "age",          :limit => 255
     t.string   "phone"
     t.integer  "voicepart_id"
     t.integer  "status_id"

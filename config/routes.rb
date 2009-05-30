@@ -40,6 +40,8 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :singers
   end
 
+  map.connect '/admin/:action', :controller => 'admin'
+
   map.connect '/', :controller => 'main', :action => 'index'
   map.connect '/:action', :controller => 'main'
 
