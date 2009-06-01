@@ -1,0 +1,53 @@
+<div class="column-1">
+
+  <h1>The Stadium Choir</h1>
+
+  <div id="rendered-content">
+
+    <h2>Flyers</h2>
+
+    <p>Here are some flyers that you can use for recruiting purposes.  The .png
+    images seem to print out better than the .pdf ones.</p>
+   
+    <p>The ones with "_sm" in the filename are small and in a lower resolution,
+    suitable for emailing to others to view them on-screen.  The others are
+    higher resolution for printing.  The ones with the "_4" in the file name
+    have 4 per page, so they're more useful for printing if you want something
+    to cut up and hand out.</p>
+
+    <p>We'll probably adjust them for prettier printing as we go, and we'll be
+    making a full-sheet version for posting on walls and bulletin boards
+    soon.</p>
+
+    <%
+      flyers = %w[
+        stadium_of_fire_choir_flyer_sawtooth.png
+        stadium_of_fire_choir_flyer_sawtooth_sm.png
+        stadium_of_fire_choir_flyer_sawtooth_4.png
+        stadium_of_fire_choir_flyer_sawtooth_4.pdf
+        stadium_of_fire_choir_flyer_solid.png
+        stadium_of_fire_choir_flyer_solid_sm.png
+        stadium_of_fire_choir_flyer_solid_4.png
+        stadium_of_fire_choir_flyer_solid_4.pdf
+      ]
+    %>
+    <ul>
+      <% flyers.each do |flyer| %>
+        <li><a href="/images/flyers/<%= flyer %>"><%= flyer %></a>
+      <% end %>
+    </ul>
+
+  </div>
+
+</div>
+
+
+<div class="column-2">
+
+  <div class="standard-container">
+    <div>
+      <h1><a href="/">Home</a></h1>
+    </div>
+  </div>
+
+</div>
