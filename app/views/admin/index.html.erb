@@ -1,0 +1,30 @@
+<h2>Singer Count</h2>
+<div>
+  Total: <%= @singers.size %><br>
+  Unique Email Addresses: <%= @singers.size - @email_dupes.size %>
+</div>
+
+<div>
+  <h2>Singer List</h2>
+
+  <table border="1">
+    <tr>
+      <th>name</th>
+      <th>age</th>
+      <th>email</th>
+      <th>phone</th>
+      <th>voice part</th>
+      <th>recording</th>
+    </tr>
+    <% @singers.each do |singer| %>
+      <tr>
+        <td><%= singer.last_name %> <%= singer.first_name %></td>
+        <td><%= singer.age %></td>
+        <td><%= singer.email %></td>
+        <td><%= singer.phone %></td>
+        <td><%= singer.voicepart %></td>
+        <td><%= singer.recording %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

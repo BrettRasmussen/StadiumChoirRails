@@ -1,11 +1,3 @@
-<h1>Admin</h1>
-
-<h2>Singer Count</h2>
-<p>
-  Total: <%= @singers.size %><br>
-  Unique Email Addresses: <%= @singers.size - @email_dupes.size %>
-</p>
-
 <h2>Duplicate Email Addresses</h2>
 <table border="1">
   <% @email_dupes.each do |email,val| %>

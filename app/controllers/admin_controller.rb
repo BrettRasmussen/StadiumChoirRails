@@ -1,12 +1,38 @@
 class AdminController < ApplicationController
-  layout false
-
   before_filter :authorize, :except => %w[login try_login]
 
   def index
     @singers = Singer.all
+    @singers = @singers.sort_by {|s| s.last_name + s.first_name}
+    calculate_email_dupes
+  end
 
-    # Deal with entries with duplicate addresses
+  def email_list
+    sql = "select distinct(email) from singers"
+    @email_addresses = ActiveRecord::Base.connection.select_values(sql)
+  end
+
+  def duplicates
+    @singers = Singer.all
+    calculate_email_dupes
+  end
+
+  def try_login
+    if [params[:username], params[:password]] == %w[stadiumchoir Blu3.not3]
+      session[:admin] = true
+      redirect_to :action => "index"
+    else
+      render :action => "login"
+    end
+  end
+
+  def authorize
+    redirect_to :action => "login" unless session[:admin] == true
+  end
+
+  protected
+
+  def calculate_email_dupes
     if !@singers.empty?
       @email_dupes = {}
       @singers.each do |s|
@@ -28,24 +54,6 @@ class AdminController < ApplicationController
         @email_dupes[email][:differences] = differences
       end
     end
-  end
-
-  def email_list
-    sql = "select distinct(email) from singers"
-    @email_addresses = ActiveRecord::Base.connection.select_values(sql)
-  end
-
-  def try_login
-    if [params[:username], params[:password]] == %w[stadiumchoir Blu3.not3]
-      session[:admin] = true
-      redirect_to :action => "index"
-    else
-      render :action => "login"
-    end
-  end
-
-  def authorize
-    redirect_to :action => "login" unless session[:admin] == true
   end
 
 end
