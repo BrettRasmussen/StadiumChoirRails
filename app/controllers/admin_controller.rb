@@ -5,6 +5,9 @@ class AdminController < ApplicationController
     @singers = Singer.all
     @singers = @singers.sort_by {|s| s.last_name + s.first_name}
     calculate_email_dupes
+    @part_counts = Hash.new(0)
+    @singers.each {|s| @part_counts[s.voicepart] += 1}
+    @voicepars = Voicepart.all
   end
 
   def email_list
