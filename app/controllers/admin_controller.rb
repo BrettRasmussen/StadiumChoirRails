@@ -53,6 +53,7 @@ class AdminController < ApplicationController
         end
         @email_dupes[email][:differences] = differences
       end
+      @email_dupes.delete_if {|k,v| v[:differences].has_key?('first_name')}
     end
   end
 
