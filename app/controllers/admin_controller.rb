@@ -7,7 +7,7 @@ class AdminController < ApplicationController
     calculate_email_dupes
     @part_counts = Hash.new(0)
     @singers.each {|s| @part_counts[s.voicepart] += 1}
-    @voicepars = Voicepart.all
+    @voiceparts = Voicepart.all
   end
 
   def email_list
