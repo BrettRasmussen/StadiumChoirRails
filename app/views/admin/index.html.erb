@@ -5,6 +5,12 @@
 </div>
 
 <div>
+  <% @voiceparts.each do |vp| %>
+    <%= vp.name %>: <%= @part_counts[vp] %>
+  <% end %>
+</div>
+
+<div>
   <h2>Singer List</h2>
 
   <table border="1">
