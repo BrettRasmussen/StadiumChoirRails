@@ -6,7 +6,7 @@
 
 <div>
   <% @voiceparts.each do |vp| %>
-    <%= vp.name %>: <%= @part_counts[vp] %>
+    <%= vp.name %>: <%= @part_counts[vp.name] %>
   <% end %>
 </div>
 
