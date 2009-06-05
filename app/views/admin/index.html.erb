@@ -16,6 +16,7 @@
 
   <table border="1">
     <tr>
+      <th>id</th>
       <th>name</th>
       <th>age</th>
       <th>email</th>
@@ -25,6 +26,7 @@
     </tr>
     <% @singers.each do |singer| %>
       <tr>
+        <td><%= singer.id %></td>
         <td><%= singer.last_name %> <%= singer.first_name %></td>
         <td><%= singer.age %></td>
         <td><%= singer.email %></td>
