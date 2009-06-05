@@ -3,7 +3,7 @@ class AdminController < ApplicationController
 
   def index
     @singers = Singer.all
-    @singers = @singers.sort_by {|s| s.last_name + s.first_name}
+    @singers = @singers.sort_by {|s| s.last_name.downcase + s.first_name.downcase}
     calculate_email_dupes
     @part_counts = Hash.new(0)
     @singers.each {|s| @part_counts[s.voicepart] += 1}
