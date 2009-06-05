@@ -64,7 +64,7 @@
 
       <font color="red"><em>Please hit this button <b>only once</b>
       (it might take a minute)</em></font><br>
-      <%= submit_tag "Sign Me Up" %>
+      <%= submit_tag "Sign Me Up", :onclick => "this.disabled=true,this.form.onsubmit();" %>
     <% end %>
   
   </div>
