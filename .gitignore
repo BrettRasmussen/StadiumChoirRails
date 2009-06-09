@@ -3,3 +3,4 @@ tmp/**/*
 tmp/restart.txt
 .*.swp
 *.sqlite3
+db/bak
