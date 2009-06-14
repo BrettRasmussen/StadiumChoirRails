@@ -4,7 +4,7 @@
 
 timestamp = Time.now.strftime("%Y%m%d")
 bak_file = "db/production_bak.sqlite3"
-incremental_bak_file = "db/bak/#{timestamp}_#{bak_file}"
+incremental_bak_file = "db/bak/#{timestamp}_#{File.basename(bak_file)}"
 
 begin
   if File::Stat.new(bak_file).size > File::Stat.new(incremental_bak_file).size
