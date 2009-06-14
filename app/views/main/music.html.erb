@@ -1,0 +1,42 @@
+<div class="column-1">
+
+  <h1>The Stadium Choir</h1>
+
+  <div id="rendered-content">
+
+    <h2>Music</h2>
+
+    <p>Here is the sheet music for the songs we'll be singing.
+    <span style="font-weight:bold">You need to print it and bring it to
+    rehearsal.</span></p>
+
+    <p><em>76 Trombones</em> and <em>Grand Old Flag</em> will be here soon.</p>
+   
+    <%
+      pieces = [
+        "America the Beautiful",
+        "Battle Hymn of the Republic",
+        "God Bless America"
+      ]
+    %>
+    <ul>
+      <% pieces.each do |piece| %>
+        <% piece_file = piece.gsub(/\s+/, '_').downcase %>
+        <li><a href="http://www.twoedge.com/stadiumchoir/<%= piece_file %>.pdf"><%= piece %></a>
+      <% end %>
+    </ul>
+
+  </div>
+
+</div>
+
+
+<div class="column-2">
+
+  <div class="standard-container">
+    <div>
+      <h1><a href="/">Home</a></h1>
+    </div>
+  </div>
+
+</div>
