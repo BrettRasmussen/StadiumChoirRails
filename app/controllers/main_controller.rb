@@ -6,7 +6,7 @@ class MainController < ApplicationController
   def do_signup
     @singer = Singer.new(params[:singer])
     #@singer.status = params[:committed] == 'true' ? 'committed' : 'interested'
-    @singer.status = 'committed'
+    @singer.status = 'interested'
     if @singer.save
       render :template => 'main/signup_thanks'
     else
