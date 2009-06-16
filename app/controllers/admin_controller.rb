@@ -2,7 +2,7 @@ class AdminController < ApplicationController
   before_filter :authorize, :except => %w[login try_login]
 
   def index
-    @singers = Singer.all
+    @singers = Singer.find(:all, :conditions => "status_id = 4")
     @singers = @singers.sort_by {|s| s.last_name.downcase + s.first_name.downcase}
     calculate_email_dupes
     @part_counts = Hash.new(0)
@@ -11,12 +11,12 @@ class AdminController < ApplicationController
   end
 
   def email_list
-    sql = "select distinct(email) from singers"
+    sql = "select distinct(email) from singers where status_id = 4"
     @email_addresses = ActiveRecord::Base.connection.select_values(sql)
   end
 
   def duplicates
-    @singers = Singer.all
+    @singers = Singer.find(:all, :conditions => "status_id = 4")
     calculate_email_dupes
   end
 
