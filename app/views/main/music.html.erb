@@ -10,8 +10,6 @@
     <span style="font-weight:bold">You need to print it and bring it to
     rehearsal.</span></p>
 
-    <p><em>76 Trombones</em> and <em>Grand Old Flag</em> will be here soon.</p>
-   
     <%
       pieces = [
         "America the Beautiful",
@@ -25,6 +23,27 @@
       <% pieces.each do |piece| %>
         <% piece_file = piece.gsub(/\s+/, '_').downcase %>
         <li><a href="http://www.twoedge.com/stadiumchoir/<%= piece_file %>.pdf"><%= piece %></a>
+      <% end %>
+    </ul>
+
+    <p>Here are the recordings we'll be singing along to.  Please familiarize
+    yourself with all of the timing issues (tempos, length of fermatas, length
+    of breaks, etc.)</p>
+
+    <p><em>Grand Old Flag</em> will be here soon.</p>
+
+    <%
+      recordings = [
+        ["America, the Beautiful", "01_america_the_beautiful.mp3"],
+        ["76 Trombones", "76_Tmb_AFMB_09.mp3"],
+        ["God Bless America", "16_god_bless_america.mp3"],
+        ["Fireworks Finale", "SOF_09_Patriotic_Pyro_Edit_1.mp3"],
+        ["Battle Hymn of the Republic", "05_battle_hymn_of_the_republic.mp3"]
+      ]
+    %>
+    <ul>
+      <% recordings.each do |recording| %>
+        <li><a href="http://www.twoedge.com/stadiumchoir/<%= recording[1] %>"><%= recording[0] %></a></li>
       <% end %>
     </ul>
 
